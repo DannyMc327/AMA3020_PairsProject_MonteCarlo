@@ -2,12 +2,7 @@
 #Metropolis-Hastings algorithm code for multiple dimensions
 
 
-###parameters ###
-
-
-#A burn-in iteration is an initial iteration in a Markov chain (MCMC) that is discarded before
-#the chain converges to its target distribution. The burn-in period is the number of iterations
-#that are discarded before the chain is considered to have "forgotten" its initial value.
+#parameters
 
 burnin = 0  # number of burn-in iterations
 lag = 1  # iterations between successive samples
