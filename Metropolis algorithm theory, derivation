@@ -1,0 +1,21 @@
+subsection{2.2 - Metropolis algorithm}
+
+Suppose we want to sample from a complex distribution for our Monte-Carlo integration, P(X). To generate samples from this distribution, we first define a Markov Chain over a number of possible x values, so that the stationary distribution is P(X).
+
+We want to use this Markov chain to generate N samples, ($x_1, x_2, ..., x_N$), to guarantee that $x_n ~ P(X)$ as $n \to \infty$.
+
+We can use a 2-step process called the Metropolis algorithm to generate $x_{n+1}$ using the current state of $x_{n}$.
+
+The first step is generating a proposal sample value, $x^*$, from a proposal distribution, $Q(x^* | x_n)$, which is centered at $x_n$. We can use the normal distribution centered at $x_n$ with an standard deviation, $N ~ (x_n, \sigma^2)$.
+
+The next step is calculating an acceptance probability, $A_n = min(1, \frac{P(x^*}{P(x_n)})$, and generate a random number, $0 <= u <= 1$, from the uniform distribution. We can then accept/reject the proposal sample using 
+
+$$
+x_{n+1} = 
+\begin{cases}
+x^*  & \textrm{if} \ u \le A_n \\
+x_n & \textrm{if} \ A_n \le u
+\end{cases}
+$$.
+
+This process is repeated until $n=N$ to generate $(x_1, x_2, ..., x_n)$ samples \cite{dirtyquant}.
